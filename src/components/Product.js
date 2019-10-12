@@ -1,6 +1,7 @@
 import React from "react";
 class Product extends React.Component {
   showRatings = rating => {
+    // in ra so luong sao
     let result = [];
     for (var i = 0; i < rating; i++) {
       result.push(<i key={i} className="fa fa-star"></i>);

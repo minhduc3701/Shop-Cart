@@ -2,11 +2,11 @@ import React from "react";
 class Product extends React.Component {
   showRatings = rating => {
     let result = [];
-    for (let i = 0; i < rating; i++) {
-      result.push(<i className="fa fa-star"></i>);
+    for (var i = 0; i < rating; i++) {
+      result.push(<i key={i} className="fa fa-star"></i>);
     }
     for (let j = 0; j < 5 - rating; j++) {
-      result.push(<i className="fa fa-star-o"></i>);
+      result.push(<i key={j + i} className="fa fa-star-o"></i>);
     }
     return result;
   };

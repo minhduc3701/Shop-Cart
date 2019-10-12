@@ -44,6 +44,7 @@ class Product extends React.Component {
                   data-original-title="Add to Cart"
                 >
                   <i className="fa fa-shopping-cart"></i>
+                  {/* button add to cart */}
                 </a>
               </span>
             </div>

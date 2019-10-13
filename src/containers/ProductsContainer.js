@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Products from "../components/Products";
 import Product from "../components/Product";
 import PropTypes from "prop-types";
+import { actAddToCart } from "../actions/index";
 
 class ProductsContainer extends React.Component {
   render() {
@@ -13,9 +14,16 @@ class ProductsContainer extends React.Component {
   showProducts = products => {
     //in ra cac Product Item
     let result = null;
+    let { onAddToCart } = this.props;
     if (products.length > 0) {
       result = products.map((product, index) => {
-        return <Product key={index} product={product}></Product>;
+        return (
+          <Product
+            key={index}
+            onAddToCart={onAddToCart}
+            product={product}
+          ></Product>
+        );
       });
     }
     return result;
@@ -29,10 +37,18 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    onAddToCart: product => {
+      dispatch(actAddToCart(product, 1));
+    }
+  };
+};
+
 export default connect(
   //connect voi store
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(ProductsContainer);
 
 // kiem tra kieu du lieu truyen vao props

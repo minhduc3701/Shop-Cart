@@ -1,4 +1,6 @@
 import React from "react";
+import * as Messages from "../constants/Message";
+
 class CartItem extends React.Component {
   showSubToltal = (price, quantity) => {
     return price * quantity;
@@ -6,6 +8,7 @@ class CartItem extends React.Component {
 
   onDelete = product => {
     this.props.onDeleteProductInCart(product);
+    this.props.onChangeMessage(Messages.MSG_DELETE_PRODUCT_IN_CART_SUCCESS);
   };
 
   render() {

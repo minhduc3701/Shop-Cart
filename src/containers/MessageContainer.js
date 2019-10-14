@@ -22,6 +22,6 @@ export default connect(
   null
 )(MessageContainer);
 
-MessageContainer.protoTypes = {
+MessageContainer.propTypes = {
   message: PropTypes.string.isRequired
 };

@@ -2,13 +2,6 @@ import React from "react";
 import * as Messages from "../constants/Message";
 
 class CartItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      quantity: 1
-    };
-  }
-
   showSubToltal = (price, quantity) => {
     return price * quantity;
   };
@@ -20,10 +13,9 @@ class CartItem extends React.Component {
 
   onUpdateQuantity = (product, quantity) => {
     if (quantity > 0) {
-      this.setState({
-        quantity: quantity
-      });
-      this.props.onUpdateProductInCart(product, quantity);
+      let { onUpdateProductInCart, onChangeMessage } = this.props;
+      onUpdateProductInCart(product, quantity);
+      onChangeMessage(Messages.MSG_UPDATE_CART_SUCCESS);
     }
   };
 

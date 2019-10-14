@@ -19,3 +19,10 @@ export const actRemoveProductCart = product => {
     product
   };
 };
+export const actUpdateProductCart = (product, quantity) => {
+  return {
+    type: types.UPDATE_PRODUCT_IN_CART,
+    product,
+    quantity
+  };
+};

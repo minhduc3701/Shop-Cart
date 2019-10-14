@@ -4,18 +4,26 @@ import PropTypes from "prop-types";
 import Cart from "../components/Cart";
 import CartItem from "../components/CartItem";
 import CartResult from "../components/CartResult";
-import * as Message from "../constants/Message";
+import * as Messages from "../constants/Message";
+import * as Actions from "../actions/index";
 
 class CartContainer extends React.Component {
   showCartItem = cart => {
+    let { onDeleteProductInCart } = this.props;
     let result = (
       <tr>
-        <td>{Message.MSG_CART_EMPTY}</td>
+        <td>{Messages.MSG_CART_EMPTY}</td>
       </tr>
     );
     if (cart.length > 0) {
       result = cart.map((item, index) => {
-        return <CartItem key={index} item={item}></CartItem>;
+        return (
+          <CartItem
+            onDeleteProductInCart={onDeleteProductInCart}
+            key={index}
+            item={item}
+          ></CartItem>
+        );
       });
     }
     return result;
@@ -46,10 +54,18 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    onDeleteProductInCart: product => {
+      dispatch(Actions.actRemoveProductCart(product));
+    }
+  };
+};
+
 export default connect(
   //connect voi store
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(CartContainer);
 
 // kiem tra kieu du lieu truyen vao props

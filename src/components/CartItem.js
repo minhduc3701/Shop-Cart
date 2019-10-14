@@ -4,6 +4,10 @@ class CartItem extends React.Component {
     return price * quantity;
   };
 
+  onDelete = product => {
+    this.props.onDeleteProductInCart(product);
+  };
+
   render() {
     let { item } = this.props;
     return (
@@ -47,6 +51,7 @@ class CartItem extends React.Component {
             data-placement="top"
             title=""
             data-original-title="Remove item"
+            onClick={() => this.onDelete(item.product)}
           >
             X
           </button>

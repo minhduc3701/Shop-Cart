@@ -95,5 +95,8 @@ CartContainer.propTypes = {
       }).isRequired,
       quantity: PropTypes.number.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  onDeleteProductInCart: PropTypes.func.isRequired,
+  onChangeMessage: PropTypes.func.isRequired,
+  onUpdateProductInCart: PropTypes.func.isRequired
 };
